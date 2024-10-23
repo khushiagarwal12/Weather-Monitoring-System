@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .city {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+        }
+        .alert {
+            color: red;
+        }
+        .summary {
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Information</h1>
+
+    <div class="weather-container">
+        {% for city, data in weather.items() %}
+            <div class="city">
+                <h2>{{ city }}</h2>
+                <p>Temperature: {{ data.temp }}°C</p>
+                <p>Feels Like: {{ data.feels_like }}°C</p>
+                <p>Condition: {{ data.condition }}</p>
+                <p>Humidity: {{ data.humidity }}%</p>
+                <p>Wind Speed: {{ data.wind_speed }} m/s</p>
+                <p>Visibility: {{ data.visibility }}</p>
+                <p>Last Updated: {{ data.last_updated }}</p>
+                
+                <!-- Display the summary for each city -->
+                <h3>Weather Summary</h3>
+                <p>Average Temperature:{{ summaries[city].avg_temp }}°C</p>
+                <p>Maximum Temperature: {{ summaries[city].max_temp }}°C</p>
+                <p>Minimum Temperature: {{ summaries[city].min_temp }}°C</p>
+                <p>Dominant Weather Condition: {{ summaries[city].dominant_condition }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="alerts">
+        <h2>Alerts</h2>
+        <ul>
+            {% for alert in alerts %}
+                <li class="alert">{{ alert }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

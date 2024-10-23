@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather History</title>
+</head>
+<body>
+    <h1>Weather Data History</h1>
+    <table border="1">
+        <tr>
+            <th>City</th>
+            <th>Temperature (°C)</th>
+            <th>Feels Like (°C)</th>
+            <th>Condition</th>
+            <th>Last Updated</th>
+        </tr>
+        {% for record in weather_data %}
+        <tr>
+            <td>{{ record.city }}</td>
+            <td>{{ record.temp }}</td>
+            <td>{{ record.feels_like }}</td>
+            <td>{{ record.condition }}</td>
+            <td>{{ record.last_updated }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
